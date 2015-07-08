@@ -3,7 +3,7 @@
 
 #if !defined (List)
 
-template <typename T> class List : public ICollection<T>, public IComparable
+template <typename T> class List
 {
 public:
 
@@ -22,11 +22,11 @@ public:
 	{
 
 		ListItem() : index(0), next(0), previous(0) {}
-		ListItem(const T& item, ListItem<T>* previous, ListItem<T>* next, int index) : data(item), previous(previous), next(next), index(index) {}
+		ListItem(const T& item, ListItem* previous, ListItem* next, int index) : data(item), previous(previous), next(next), index(index) {}
 		~ListItem() {}
 
-		ListItem<T>* next;
-		ListItem<T>* previous;
+		ListItem* next;
+		ListItem* previous;
 		int index;
 		T data;
 
@@ -99,15 +99,15 @@ public:
 	protected:
 
 		List<T>* _list;
-		ListItem<T>* _link;
+		ListItem* _link;
 
 	};
 
-	friend class Iterator<T>;
+	friend class Iterator;
 
 	const int add(const T& item)
 	{
-		ListItem<T>* link = new ListItem<T>(item, this->_last, 0, this->_count);
+		ListItem* link = new ListItem(item, this->_last, 0, this->_count);
 		if (this->_last != 0)
 		{
 			this->_last->next = link;
@@ -125,7 +125,7 @@ public:
 	}
 	T& get(const int index)
 	{
-		ListItem<T>* current = this->_first;
+		ListItem* current = this->_first;
 		int iteration = 0;
 		while (current != 0)
 		{
@@ -142,7 +142,7 @@ public:
 	}
 	bool contains(const T& item)
 	{
-		ListItem<T>* current = this->_first;
+		ListItem* current = this->_first;
 		while (current != 0)
 		{
 			if (memcmp(&(current->data), &item, sizeof(T)) == 0)
@@ -157,7 +157,7 @@ public:
 	}
 	const int indexOf(const T& item)
 	{
-		ListItem<T>* current = this->_first;
+		ListItem* current = this->_first;
 		while (current != 0)
 		{
 			if (memcmp(&(current->data), &item, sizeof(T)) == 0)
@@ -174,13 +174,13 @@ public:
 	{
 		if (this->_first == 0)
 		{
-			this->_first = new ListItem<T>(item, 0, 0, 0);
+			this->_first = new ListItem(item, 0, 0, 0);
 			this->_last = this->_first;
 			this->_count = 1;
 		}
 		else if (index >= this->_count)
 		{
-			ListItem<T>* link = new ListItem<T>(item, this->_last, 0, this->_count);
+			ListItem* link = new ListItem(item, this->_last, 0, this->_count);
 			if (this->_last != 0)
 			{
 				this->_last->next = link;
@@ -191,8 +191,8 @@ public:
 		}
 		else
 		{
-			ListItem<T>* existing = this->search(index);
-			ListItem<T>* link = new ListItem<T>(item, existing->previous, existing, existing->index);
+			ListItem* existing = this->search(index);
+			ListItem* link = new ListItem(item, existing->previous, existing, existing->index);
 			if (existing->previous != 0)
 			{
 				existing->previous->next = link;
@@ -205,7 +205,7 @@ public:
 	}
 	void remove(const T& item)
 	{
-		ListItem<T>* current = this->_first;
+		ListItem* current = this->_first;
 		while (current != 0)
 		{
 			if (memcmp(&(current->data), &item, sizeof(T)) == 0)
@@ -221,7 +221,7 @@ public:
 	}
 	void removeAt(const int index)
 	{
-		ListItem<T>* current = this->_first;
+		ListItem* current = this->_first;
 		while (current != 0)
 		{
 			if (current->index == index)
@@ -238,8 +238,8 @@ public:
 
 	void clear()
 	{
-		ListItem<T>* current = this->_first;
-		ListItem<T>* temp = 0;
+		ListItem* current = this->_first;
+		ListItem* temp = 0;
 		while (current != 0)
 		{
 			temp = current;
@@ -261,17 +261,17 @@ public:
 		return index < this->_count && index >= 0;
 	}
 
-	Iterator<T> iterator() const
+	Iterator iterator() const
 	{
 		//this->_iterator->restart();
 		//return this->_iterator;
-		return Iterator<T>((List<T>*)this);
+		return Iterator((List<T>*)this);
 	}
-	Iterator<T> iteratorAtEnd() const
+	Iterator iteratorAtEnd() const
 	{
 		//this->_iterator->end();
 		//return this->_iterator;
-		Iterator<T> i((List<T>*)this);
+		Iterator i((List<T>*)this);
 		i.end();
 		return i;
 	}
@@ -284,12 +284,12 @@ public:
 protected:
 
 	int _count;
-	ListItem<T>* _first;
-	ListItem<T>* _last;
+	ListItem* _first;
+	ListItem* _last;
 
-	ListItem<T>* search(const int index)
+	ListItem* search(const int index)
 	{
-		ListItem<T>* current = this->_first;
+		ListItem* current = this->_first;
 		while (current != 0)
 		{
 			if (current->index == index)
@@ -302,19 +302,19 @@ protected:
 
 		return 0;
 	}
-	void shift(ListItem<T>* start, const int amount)
+	void shift(ListItem* start, const int amount)
 	{
-		ListItem<T>* current = start;
+		ListItem* current = start;
 		while (current != 0)
 		{
 			current->index += amount;
 			current = current->next;
 		}
 	}
-	void unlink(ListItem<T>* link)
+	void unlink(ListItem* link)
 	{
-		ListItem<T>* prev = link->previous;
-		ListItem<T>* next = link->next;
+		ListItem* prev = link->previous;
+		ListItem* next = link->next;
 		if (prev != 0)
 		{
 			prev->next = next;

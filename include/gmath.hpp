@@ -4,8 +4,11 @@
 #include <math.h>
 #include <string.h>
 
+namespace gmath
+{
+
 #if !defined(clamp)
-template <typename T> inline T clamp(T x, T min, T max)
+template <typename T> inline T clamp(T x, T min = (T)0, T max = (T)1)
 {
 	if (x < min)
 	{
@@ -117,7 +120,7 @@ template <typename T> inline T or(T x, T y) { return truth(x + y); }
 template <typename T> inline T xor(T x, T y) { return truth((x * ((T)1 - y)) + (((T)1 - x) * y)); }
 #endif
 
-#if !defined(vec2) && !defined(vec3) && !defined(vec4)
+#if !(defined(tvec2) || defined(tvec3) || defined(tvec4) || defined(vec2) || defined(vec3) || defined(vec4) || defined(ivec2) || defined(ivec3) || defined(ivec4))
 template <typename T> struct tvec2;
 template <typename T> struct tvec3;
 template <typename T> struct tvec4;
@@ -892,27 +895,13 @@ template <typename T> inline tvec4<T> slerp(const tvec4<T>& v0, const tvec4<T>& 
 
 typedef tvec2<float> vec2;
 typedef tvec2<int> ivec2;
-typedef tvec2<unsigned int> uvec2;
-typedef tvec2<char> cvec2;
-typedef tvec2<unsigned char> wchar2;
-typedef tvec2<bool> bvec2;
-
 typedef tvec3<float> vec3;
 typedef tvec3<int> ivec3;
-typedef tvec3<unsigned int> uvec3;
-typedef tvec3<char> cvec3;
-typedef tvec3<unsigned char> wchar3;
-typedef tvec3<bool> bvec3;
-
 typedef tvec4<float> vec4;
 typedef tvec4<int> ivec4;
-typedef tvec4<unsigned int> uvec4;
-typedef tvec4<char> cvec4;
-typedef tvec4<unsigned char> wchar4;
-typedef tvec4<bool> bvec4;
 #endif
 
-#if !defined(mat3) && !defined(mat4)
+#if !(defined(tmat3) || defined(tmat4) || defined(mat3) || defined(mat4) || defined(imat3) || defined(imat4))
 template <typename T> struct tmat3x3;
 template <typename T> struct tmat4x4;
 
@@ -1791,16 +1780,11 @@ template <typename T> inline tmat4x4<T> operator/(const T x, const tmat4x4<T>& m
 
 typedef tmat3x3<float> mat3;
 typedef tmat3x3<int> imat3;
-typedef tmat3x3<unsigned int> umat3;
-typedef tmat3x3<bool> bmat3;
-
 typedef tmat4x4<float> mat4;
 typedef tmat4x4<int> imat4;
-typedef tmat4x4<unsigned int> umat4;
-typedef tmat4x4<bool> bmat4;
 #endif
 
-#if !defined(ray)
+#if !(defined(tray) || defined(ray))
 template <typename T> struct tray
 {
 
@@ -1894,7 +1878,7 @@ template <typename T> inline tray<T> operator-(const tvec3<T>& v, const tray<T>&
 typedef tray<float> ray;
 #endif
 
-#if !defined(box)
+#if !(defined(tbox) || defined(box))
 template <typename T> struct tbox
 {
 
@@ -2022,9 +2006,6 @@ template <typename T> inline tbox<T> operator-(const tvec2<T>& x, const tbox<T>&
 {
 	return tbox<T>(x - b.center, b.width, b.height);
 }
-
-typedef tbox<float> box;
-typedef tbox<int> ibox;
 #endif
 
 #if !defined(fuzzy) && !defined(behavior)
@@ -2347,4 +2328,5 @@ inline fuzzy compute(const behavior& conditions, const behavior& behaviors)
 }
 #endif
 
+}
 #endif

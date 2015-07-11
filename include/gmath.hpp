@@ -214,11 +214,11 @@ template <typename T> struct tvec2
 	}
 	inline void operator%=(const tvec2<T>& v)
 	{
-		return tvec2<T>(Math::module(this->x, v.x), Math::module(this->y, v.y));
+		return tvec2<T>(module(this->x, v.x), module(this->y, v.y));
 	}
 	inline void operator%=(const T& x)
 	{
-		return tvec2<T>(Math::module(this->x, x), Math::module(this->y, x));
+		return tvec2<T>(module(this->x, x), module(this->y, x));
 	}
 	inline bool operator==(const tvec2<T>& v) const
 	{
@@ -246,11 +246,11 @@ template <typename T> struct tvec2
 	}
 	inline tvec2<T> operator&&(const tvec2<T>& v) const
 	{
-		return tvec2<T>(Math::min(this->x, v.x), Math::min(this->y, v.y));
+		return tvec2<T>(min(this->x, v.x), min(this->y, v.y));
 	}
 	inline tvec2<T> operator||(const tvec2<T>& v) const
 	{
-		return tvec2<T>(Math::max(this->x, v.x), Math::max(this->y, v.y));
+		return tvec2<T>(max(this->x, v.x), max(this->y, v.y));
 	}
 	inline T& operator[](const int index)
 	{
@@ -369,11 +369,11 @@ template <typename T> struct tvec3
 	}
 	inline void operator%=(const tvec3<T>& v)
 	{
-		return tvec3<T>(Math::module(this->x, v.x), Math::module(this->y, v.y), Math::module(this->z, v.z));
+		return tvec3<T>(module(this->x, v.x), module(this->y, v.y), module(this->z, v.z));
 	}
 	inline void operator%=(const T& x)
 	{
-		return tvec3<T>(Math::module(this->x, x), Math::module(this->y, x), Math::module(this->z, x));
+		return tvec3<T>(module(this->x, x), module(this->y, x), module(this->z, x));
 	}
 	inline bool operator==(const tvec3<T>& v) const
 	{
@@ -401,11 +401,11 @@ template <typename T> struct tvec3
 	}
 	inline tvec3<T> operator&&(const tvec3<T>& v) const
 	{
-		return tvec3<T>(Math::min(this->x, v.x), Math::min(this->y, v.y), Math::min(this->z, v.z));
+		return tvec3<T>(min(this->x, v.x), min(this->y, v.y), min(this->z, v.z));
 	}
 	inline tvec3<T> operator||(const tvec3<T>& v) const
 	{
-		return tvec3<T>(Math::max(this->x, v.x), Math::max(this->y, v.y), Math::max(this->z, v.z));
+		return tvec3<T>(max(this->x, v.x), max(this->y, v.y), max(this->z, v.z));
 	}
 	inline T& operator[](const int index)
 	{
@@ -542,11 +542,11 @@ template <typename T> struct tvec4
 	}
 	inline void operator%=(const tvec4<T>& v)
 	{
-		return tvec4<T>(Math::module(this->x, v.x), Math::module(this->y, v.y), Math::module(this->z, v.z), Math::module(this->w, v.w));
+		return tvec4<T>(module(this->x, v.x), module(this->y, v.y), module(this->z, v.z), module(this->w, v.w));
 	}
 	inline void operator%=(const T& x)
 	{
-		return tvec4<T>(Math::module(this->x, x), Math::module(this->y, x), Math::module(this->z, x), Math::module(this->w, x));
+		return tvec4<T>(module(this->x, x), module(this->y, x), module(this->z, x), module(this->w, x));
 	}
 	inline bool operator==(const tvec4<T>& v) const
 	{
@@ -574,11 +574,11 @@ template <typename T> struct tvec4
 	}
 	inline tvec4<T> operator&&(const tvec4<T>& v) const
 	{
-		return tvec4<T>(Math::min(this->x, v.x), Math::min(this->y, v.y), Math::min(this->z, v.z), Math::min(this->w, v.w));
+		return tvec4<T>(min(this->x, v.x), min(this->y, v.y), min(this->z, v.z), min(this->w, v.w));
 	}
 	inline tvec4<T> operator||(const tvec4<T>& v) const
 	{
-		return tvec4<T>(Math::max(this->x, v.x), Math::max(this->y, v.y), Math::max(this->z, v.z), Math::max(this->w, v.w));
+		return tvec4<T>(max(this->x, v.x), max(this->y, v.y), max(this->z, v.z), max(this->w, v.w));
 	}
 	inline T& operator[](const int index)
 	{
@@ -657,11 +657,11 @@ template <typename T> inline tvec2<T> operator/(const T x, const tvec2<T>& v)
 }
 template <typename T> inline tvec2<T> operator%(const tvec2<T>& v0, const tvec2<T>& v1)
 {
-	return tvec2<T>(Math::module(v0.x, v1.x), Math::module(v0.y, v1.y));
+	return tvec2<T>(module(v0.x, v1.x), module(v0.y, v1.y));
 }
 template <typename T> inline tvec2<T> operator%(const tvec2<T>& v, const T x)
 {
-	return tvec2<T>(Math::module(v0.x, x), Math::module(v0.y, x));
+	return tvec2<T>(module(v0.x, x), module(v0.y, x));
 }
 
 template <typename T> inline tvec3<T> operator+(const tvec3<T>& v0, const tvec3<T>& v1)
@@ -714,11 +714,11 @@ template <typename T> inline tvec3<T> operator/(const T x, const tvec3<T>& v)
 }
 template <typename T> inline tvec3<T> operator%(const tvec3<T>& v0, const tvec3<T>& v1)
 {
-	return tvec3<T>(Math::module(v0.x, v1.x), Math::module(v0.y, v1.y), Math::module(v0.z, v1.z));
+	return tvec3<T>(module(v0.x, v1.x), module(v0.y, v1.y), module(v0.z, v1.z));
 }
 template <typename T> inline tvec3<T> operator%(const tvec3<T>& v, const T x)
 {
-	return tvec3<T>(Math::module(v0.x, x), Math::module(v0.y, x), Math::module(v0.z, x));
+	return tvec3<T>(module(v0.x, x), module(v0.y, x), module(v0.z, x));
 }
 
 template <typename T> inline tvec4<T> operator+(const tvec4<T>& v0, const tvec4<T>& v1)
@@ -771,11 +771,11 @@ template <typename T> inline tvec4<T> operator/(const T x, const tvec4<T>& v)
 }
 template <typename T> inline tvec4<T> operator%(const tvec4<T>& v0, const tvec4<T>& v1)
 {
-	return tvec4<T>(Math::module(v0.x, v1.x), Math::module(v0.y, v1.y), Math::module(v0.z, v1.z), Math::module(v0.w, v1.w));
+	return tvec4<T>(module(v0.x, v1.x), module(v0.y, v1.y), module(v0.z, v1.z), module(v0.w, v1.w));
 }
 template <typename T> inline tvec4<T> operator%(const tvec4<T>& v, const T x)
 {
-	return tvec4<T>(Math::module(v0.x, x), Math::module(v0.y, x), Math::module(v0.z, x), Math::module(v0.w, x));
+	return tvec4<T>(module(v0.x, x), module(v0.y, x), module(v0.z, x), module(v0.w, x));
 }
 
 template <typename T> inline T magnitude(const tvec2<T>& v)
@@ -1984,7 +1984,7 @@ template <typename T> struct tbox
 
 template <typename T> inline tbox<T> operator+(const tbox<T>& b0, const tbox<T>& b1)
 {
-	return tbox<T>(b0.center + b1.center, Math::max(b0.width, b1.width), Math::max(b0.height, b1.height));
+	return tbox<T>(b0.center + b1.center, max(b0.width, b1.width), max(b0.height, b1.height));
 }
 template <typename T> inline tbox<T> operator+(const tbox<T>& b, const tvec2<T>& x)
 {
@@ -1996,7 +1996,7 @@ template <typename T> inline tbox<T> operator+(const tvec2<T>& x, const tbox<T>&
 }
 template <typename T> inline tbox<T> operator-(const tbox<T>& b0, const tbox<T>& b1)
 {
-	return tbox<T>(b0.center - b1.center, Math::min(b0.width, b1.width), Math::min(b0.height, b1.height));
+	return tbox<T>(b0.center - b1.center, min(b0.width, b1.width), min(b0.height, b1.height));
 }
 template <typename T> inline tbox<T> operator-(const tbox<T>& b, const tvec2<T>& x)
 {

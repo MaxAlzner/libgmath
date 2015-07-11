@@ -103,7 +103,7 @@ public:
 
 	};
 
-	friend class Iterator;
+	friend struct Iterator;
 
 	const int add(const T& item)
 	{

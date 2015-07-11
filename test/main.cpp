@@ -1,6 +1,8 @@
 
 #include <gmath.hpp>
 #include <encode.hpp>
+#include <random.hpp>
+#include <delegate.hpp>
 
 int main(int argc, char** argv)
 {

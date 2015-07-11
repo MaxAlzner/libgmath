@@ -43,7 +43,12 @@ public:
 	{
 		if (this->_capacity < 1)
 		{
-			this->resize(1);
+			this->resize(index);
+		}
+
+		if (index >= this->_count)
+		{
+			this->_count = index + 1;
 		}
 
 		return this->_data[index % this->_capacity];
@@ -155,16 +160,13 @@ public:
 		else
 		{
 			T* clean = new T[this->_capacity];
+			memset(clean, 0, sizeof(T) * this->_capacity);
 			if (this->_count > this->_capacity)
 			{
 				this->_count = this->_capacity;
 			}
 
-			for (int i = 0; i < this->_count; i++)
-			{
-				clean[i] = this->_data[i];
-			}
-
+			memcpy(clean, this->_data, sizeof(T) * this->_count);
 			if (this->_data != 0)
 			{
 				delete[] this->_data;

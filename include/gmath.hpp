@@ -1568,15 +1568,10 @@ template <typename T> inline tmat4x4<T> frustum(const T left, const T right, con
 template <typename T> inline tmat4x4<T> perspective(const T fov, const T aspect, const T nearZ, const T farZ)
 {
 	T rad = radians<T>(fov);
-	T range = (T)tan(rad / (T)2) * nearZ;
-	T left = -range * aspect;
-	T right = range * aspect;
-	T bottom = -range;
-	T top = range;
-
+	T range = (T)tan(rad / (T)2);
 	return tmat4x4<T>(
-		((T)2 * nearZ) / (right - left), (T)0, (T)0, (T)0,
-		(T)0, ((T)2 * nearZ) / (top - bottom), (T)0, (T)0,
+		(T)1 / (aspect * range), (T)0, (T)0, (T)0,
+		(T)0, (T)1 / range, (T)0, (T)0,
 		(T)0, (T)0, -(farZ + nearZ) / (farZ - nearZ), -((T)2 * farZ * nearZ) / (farZ - nearZ),
 		(T)0, (T)0, (T)-1, (T)0
 		);
@@ -1609,10 +1604,8 @@ template <typename T> inline tvec3<T> unproject(const tvec3<T>& v, const tmat4x4
 template <typename T> inline tmat4x4<T> look(const tvec3<T>& eye, const tvec3<T>& focus, const tvec3<T>& up)
 {
 	tvec3<T> f = normalize(focus - eye);
-	tvec3<T> u = normalize(up);
-	tvec3<T> s = normalize(cross(f, u));
-	u = cross(s, f);
-
+	tvec3<T> s = normalize(cross(f, up));
+	tvec3<T> u = normalize(cross(s, f));
 	return tmat4x4<T>(
 		s.x, s.y, s.z, -dot(s, eye),
 		u.x, u.y, u.z, -dot(u, eye),

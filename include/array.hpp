@@ -16,6 +16,8 @@ public:
 	Array(const int length)
 	{
 		this->_count = 0;
+		this->_capacity = 0;
+		this->_data = 0;
 		this->resize(length);
 	}
 	~Array()

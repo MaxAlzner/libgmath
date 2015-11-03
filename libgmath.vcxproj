@@ -12,12 +12,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\array.hpp" />
+    <ClInclude Include="include\box.hpp" />
     <ClInclude Include="include\delegate.hpp" />
+    <ClInclude Include="include\fuzzy.hpp" />
     <ClInclude Include="include\list.hpp" />
     <ClInclude Include="include\map.hpp" />
     <ClInclude Include="include\gmath.hpp" />
     <ClInclude Include="include\encode.hpp" />
     <ClInclude Include="include\random.hpp" />
+    <ClInclude Include="include\ray.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2F4F6B1C-A8CD-4B22-B4B3-C4CD31D06CD8}</ProjectGuid>

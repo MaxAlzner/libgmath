@@ -1,9 +1,11 @@
 #ifndef RANDOM_H
 #define RANDOM_H
 
-#include <gmath.hpp>
+#include <math.h>
 #include <time.h>
 #include <random>
+
+#include <fuzzy.hpp>
 
 class random
 {
@@ -26,23 +28,23 @@ public:
 
 	inline static char range(char min, char max)
 	{
-		return gmath::interp(scalar(), min, max);
+		return interp(scalar(), min, max);
 	}
 	inline static int range(int min, int max)
 	{
-		return gmath::interp(scalar(), min, max);
+		return interp(scalar(), min, max);
 	}
 	inline static long long range(long long min, long long max)
 	{
-		return gmath::interp(scalar(), min, max);
+		return interp(scalar(), min, max);
 	}
 	inline static float range(float min, float max)
 	{
-		return gmath::interp(scalar(), min, max);
+		return interp(scalar(), min, max);
 	}
 	inline static double range(double min, double max)
 	{
-		return gmath::interp(scalar(), min, max);
+		return interp(scalar(), min, max);
 	}
 
 	inline static int d100()
